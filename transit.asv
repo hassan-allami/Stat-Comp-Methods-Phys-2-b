@@ -1,0 +1,4 @@
+%This a function that generates the general form of the profile for
+%given parameters
+function y = transit(t,F,q,T,r,t0)
+y = F*(1+q*square((t-t0)/T,100-r));

@@ -1,0 +1,15 @@
+%This function calculates the Chi-Square of the fit
+function [x, fval] = opt(star_fluxes,x0)
+function X = Chi(x)
+flux = star_fluxes(:,1);
+sigma = star_fluxes(:,2);
+t = (1:400)';
+F = x(1);
+q = x(2);
+T = x(3);
+r = x(4);
+t0 = x(5);
+X = sum((flux - transit(t,F,q,T,r,t0)).^2./(sigma.^2));
+end
+x0 = [.127,.01,20,10,5];
+[x,fval] = fminsearch(@Chi,x0)
